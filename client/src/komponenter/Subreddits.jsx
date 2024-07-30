@@ -1,8 +1,16 @@
-import React from 'react'
+import React from 'react';
+import Subreddit from './Subreddit.jsx';
 
 const subreddits = () => {
   return (
-    <div>subreddits</div>
+    <aside className='subreddits-container'>
+      <h2>Subreddits</h2>
+
+      <Subreddit active={false} />
+      <Subreddit active={true} />
+      <Subreddit active={false} />
+
+    </aside>
   )
 }
 

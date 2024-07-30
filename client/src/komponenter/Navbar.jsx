@@ -13,9 +13,10 @@ const Navbar = () => {
           <div>Reddit<span>Minimal</span></div>
       </div>
 
-      <div className='navbar-search'>
-        <span className="material-symbols-rounded">search</span>
-      </div>
+      <form className='navbar-search'>
+        <input type='text' placeholder='Search'/>
+        <span className="material-symbols-rounded search-icon">search</span>
+      </form>
         
 
     </div>
