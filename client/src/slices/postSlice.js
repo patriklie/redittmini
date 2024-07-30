@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
     subReddits: ["Home", "AskReddit"],
     activePosts: [],
+    activeSubreddit: "",
 }
 
 const postSlice = createSlice({
