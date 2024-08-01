@@ -3,7 +3,7 @@ import testbilde from '../assets/images/subreddit_test.png'
 import { addActiveSubreddit } from '../slices/postSlice';
 import { useDispatch } from 'react-redux';
 
-const Subreddit = ({ active, image, subname = "Name", url }) => {
+const Subreddit = ({ active, image, subname = "Name", url, id }) => {
 
     const dispatch = useDispatch();
     const subImage = image || testbilde;
@@ -11,7 +11,7 @@ const Subreddit = ({ active, image, subname = "Name", url }) => {
 
     const handleActiveSubreddit = () => {
       console.log("inside handle active subreddit")
-      dispatch(addActiveSubreddit({image, subname, url}))
+      dispatch(addActiveSubreddit({image, name: subname, url, id}))
     }
 
   return (

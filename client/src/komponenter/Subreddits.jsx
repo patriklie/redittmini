@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import Subreddit from './Subreddit.jsx';
 import axios from 'axios';
-
+import { useSelector } from 'react-redux';
 
 const Subreddits = () => {
 
   const [popularSubreddits, setPopularSubreddits] = useState([]);
-  const [activeSubreddit, setActiveSubreddit] = useState([]);
+  const activeSub = useSelector(state => state.post.activeSubreddit);
 
   useEffect(() => {
     const fetchPopularSubreddits = async () => {
@@ -34,13 +34,13 @@ const Subreddits = () => {
 
       {
         popularSubreddits.map(sub => {
-          return <Subreddit key={sub.id} image={sub.image} subname={sub.name} url={sub.url} />
+          if (sub.id === activeSub.id) {
+            return <Subreddit key={sub.id} id={sub.id} active={true} image={sub.image} subname={sub.name} url={sub.url} />
+          } else {
+            return <Subreddit key={sub.id} id={sub.id} active={false} image={sub.image} subname={sub.name} url={sub.url} />
+          }
         })
       }
-
-{/*       <Subreddit active={false} />
-      <Subreddit active={true} />
-      <Subreddit active={false} /> */}
 
     </aside>
   )
