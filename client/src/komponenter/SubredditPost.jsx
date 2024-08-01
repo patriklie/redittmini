@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 const SubredditPost = ({ post }) => {
 
-    const { title, author, votes, comments, image, time } = post;
+    const { title, author, votes, comments, image, time, text } = post;
     const formattedTime = new Date(time * 1000).toLocaleDateString();
 
     const [upVoted, setUpVoted] = useState(false);
@@ -10,14 +10,23 @@ const SubredditPost = ({ post }) => {
 
     const handleUpvote = () => {
         console.log('You upvoted this post!');
-        setUpVoted(true);
-        setDownVoted(false);
+        if(upVoted) {
+            setUpVoted(false)
+        } else {
+            setUpVoted(true);
+            setDownVoted(false);
+        }
+
     }
 
     const handleDownvote = () => {
         console.log('You downvoted this post!');
-        setUpVoted(false);
-        setDownVoted(true);
+        if(downVoted) {
+            setDownVoted(false)
+        } else {
+            setUpVoted(false);
+            setDownVoted(true);
+        }
     }
 
   return (
@@ -35,6 +44,11 @@ const SubredditPost = ({ post }) => {
             <div className='post-container'>
                 <div className='post-title'>{title}</div>
                 <img className='post-image' src={image} />
+                { text && (
+            <div className='post-text'>{text}</div>
+          )}
+                
+
                 <div className='post-details-container'>
                     <div className='author'>{author}</div>
                     <div className="time">{formattedTime} hours ago</div>

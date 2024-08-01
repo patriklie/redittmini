@@ -29,19 +29,20 @@ const Subreddits = () => {
   }, []);
 
   return (
-    <aside className='subreddits-container'>
-      <h2>Subreddits</h2>
+    <aside>
+      <div className='subreddits-container'>
+        <h2>Subreddits</h2>
 
-      {
-        popularSubreddits.map(sub => {
-          if (sub.id === activeSub.id) {
-            return <Subreddit key={sub.id} id={sub.id} active={true} image={sub.image} subname={sub.name} url={sub.url} />
-          } else {
-            return <Subreddit key={sub.id} id={sub.id} active={false} image={sub.image} subname={sub.name} url={sub.url} />
-          }
-        })
-      }
-
+        {
+          popularSubreddits.map(sub => {
+            if (sub.id === activeSub.id) {
+              return <Subreddit key={sub.id} id={sub.id} active={true} image={sub.image} subname={sub.name} url={sub.url} />
+            } else {
+              return <Subreddit key={sub.id} id={sub.id} active={false} image={sub.image} subname={sub.name} url={sub.url} />
+            }
+          })
+        }
+    </div>
     </aside>
   )
 }

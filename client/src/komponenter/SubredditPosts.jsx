@@ -26,6 +26,7 @@ const SubredditPosts = () => {
         comments: post.data.num_comments,
         image: post.data.url,
         time: post.data.created_utc,
+        text: post.data.selftext,
       }))
       setPosts(mappedPosts);
     }

@@ -102,7 +102,6 @@ html, body {
 /* SUBREDDITS */
 
 .subreddits-container {
-    grid-column: 3 / 4;
     box-shadow: var(--shadow);
     padding: var(--spacing-2);
     border-radius: var(--border-radiusen);
