@@ -52,6 +52,8 @@ html, body {
     padding: 20px 60px;
     color: var(--primary-color);
     box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
 }
 
 .navbar-logo svg {

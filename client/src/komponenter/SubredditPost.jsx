@@ -1,9 +1,31 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import TimeAgo from 'javascript-time-ago'
+import en from 'javascript-time-ago/locale/en';
+import axios from 'axios';
+import { useSelector } from 'react-redux';
+
+TimeAgo.addDefaultLocale(en);
+const timeAgo = new TimeAgo('en-US');
+
+const formatVotes = (votes) => {
+    if (votes >= 1_000_000) {
+      return (votes / 1_000_000).toFixed(1) + 'M';
+    } else if (votes >= 1_000) {
+      return (votes / 1_000).toFixed(1) + 'K'; 
+    } else {
+      return votes; 
+    }
+  };
 
 const SubredditPost = ({ post }) => {
 
-    const { title, author, votes, comments, image, time, text } = post;
-    const formattedTime = new Date(time * 1000).toLocaleDateString();
+    const { title, author, votes, comments, image, time, text, id } = post;
+    const [postComments, setPostComments] = useState([]);
+    const [toggleComments, setToggleComments] = useState(false);
+    const activeSubreddit = useSelector(state => state.post.activeSubreddit)
+
+    const formattedTime = new Date(time * 1000);
+    const formattedVotes = formatVotes(votes);
 
     const [upVoted, setUpVoted] = useState(false);
     const [downVoted, setDownVoted] = useState(false);
@@ -29,6 +51,13 @@ const SubredditPost = ({ post }) => {
         }
     }
 
+    const fetchComments = async () => {
+        setToggleComments(!toggleComments);
+        console.log("Showing Comments for post!");
+        const response = await axios(`https://www.reddit.com/r/${activeSubreddit.name}/comments/${id}/.json`);
+        console.log(response);
+    }
+
   return (
     <article>
         <div className='post-card'>
@@ -36,7 +65,7 @@ const SubredditPost = ({ post }) => {
                 <span 
                 onClick={handleUpvote} 
                 className={`material-symbols-rounded votes up ${upVoted ? "active" : ""}`}>arrow_upward_alt</span>
-                <div className='votes'>{votes}</div>
+                <div className='votes'>{formattedVotes}</div>
                 <span 
                 onClick={handleDownvote} 
                 className={`material-symbols-rounded votes down ${downVoted ? "active" : ""}`}>arrow_downward_alt</span>
@@ -48,12 +77,11 @@ const SubredditPost = ({ post }) => {
             <div className='post-text'>{text}</div>
           )}
                 
-
                 <div className='post-details-container'>
                     <div className='author'>{author}</div>
-                    <div className="time">{formattedTime} hours ago</div>
+                    <div className="time">{timeAgo.format(formattedTime)}</div>
                     <div className='comments'>
-                        <span className="material-symbols-rounded comments">chat</span>
+                        <span onClick={fetchComments} className="material-symbols-rounded comments">chat</span>
                         <p>{comments}</p>
                     </div>
                 </div>
