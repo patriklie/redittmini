@@ -207,6 +207,11 @@ main {
     color: red;
 }
 
+.post-container {
+    word-break: break-all;
+    width: 100%;
+}
+
 .post-details-container {
     display: flex;
     justify-content: space-between;
@@ -225,4 +230,35 @@ main {
     cursor: pointer;
     color: grey;
     user-select: none;
+}
+
+/* COMMENTS */
+
+.comment-container {
+    background-color: rgb(231, 234, 255);
+    padding: var(--spacing-1);
+    border-radius: var(--border-radiusen);
+    margin-top: var(--spacing-1);
+    transition: .5s ease;
+}
+
+.comment-container:hover {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.comment-username {
+    font-weight: 500;
+}
+
+.comment-time {
+    font-size: .8rem;
+}
+
+.comment-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.comment-text {
+    word-break: normal;
 }

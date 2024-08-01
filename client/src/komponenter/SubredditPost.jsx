@@ -22,6 +22,7 @@ const SubredditPost = ({ post }) => {
     const { title, author, votes, comments, image, time, text, id } = post;
     const [postComments, setPostComments] = useState([]);
     const [toggleComments, setToggleComments] = useState(false);
+    const [numVotes, setNumVotes] = useState(votes);
     const activeSubreddit = useSelector(state => state.post.activeSubreddit)
 
     const formattedTime = new Date(time * 1000);
@@ -52,15 +53,30 @@ const SubredditPost = ({ post }) => {
     }
 
     const fetchComments = async () => {
-        setToggleComments(!toggleComments);
-        console.log("Showing Comments for post!");
-        const response = await axios(`https://www.reddit.com/r/${activeSubreddit.name}/comments/${id}/.json`);
-        console.log(response);
-    }
+        if (toggleComments) {
+            setToggleComments(false)
+        } else {
+            setToggleComments(true);
+            console.log("Showing Comments for post!");
+            const response = await axios(`https://www.reddit.com/r/${activeSubreddit.name}/comments/${id}/.json`);
+            console.log(response.data[1].data.children);
+
+            if (response.data[1].data.children.length > 0) {
+                const comments = response.data[1].data.children.map(comment => ({
+                    commentAuthor: comment.data.author,
+                    commentTime: comment.data.created_utc,
+                    commentId: comment.data.id,
+                    commentText: comment.data.body
+                }))
+                setPostComments(comments);
+            }
+    } 
+}
 
   return (
     <article>
         <div className='post-card'>
+
             <div className='post-votes-container'>
                 <span 
                 onClick={handleUpvote} 
@@ -70,6 +86,7 @@ const SubredditPost = ({ post }) => {
                 onClick={handleDownvote} 
                 className={`material-symbols-rounded votes down ${downVoted ? "active" : ""}`}>arrow_downward_alt</span>
             </div>
+
             <div className='post-container'>
                 <div className='post-title'>{title}</div>
                 <img className='post-image' src={image} />
@@ -85,7 +102,26 @@ const SubredditPost = ({ post }) => {
                         <p>{comments}</p>
                     </div>
                 </div>
+
+                { toggleComments && 
+                    <div className='comment-section'>
+
+                    { postComments.length > 0 && postComments.map(comment => (
+                        <div key={comment.commentId} className='comment-container'>
+                            <div className='comment-info'>
+                                <div className='comment-username'>{comment.commentAuthor}</div>
+                                <div className='comment-time'>{timeAgo.format(new Date(comment.commentTime * 1000))}</div>
+                            </div>
+                            <div className='comment-text'>{comment.commentText}</div>
+                        </div>
+                        ))       
+                    }
+
+                    </div>
+                }
+
             </div>
+
         </div>
     </article>
   )
