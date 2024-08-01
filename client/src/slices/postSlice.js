@@ -16,7 +16,7 @@ const postSlice = createSlice({
     initialState,
     reducers: {
         addSubredditPosts: (state, action) => {
-            // state.activePosts = action.payload
+            state.activePosts = action.payload
             console.log("legger til poster fra aktiv subreddit i reduxstore");
         },
         addActiveSubreddit: (state, action) => {

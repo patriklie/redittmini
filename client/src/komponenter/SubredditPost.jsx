@@ -1,23 +1,46 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const SubredditPost = () => {
+const SubredditPost = ({ post }) => {
+
+    const { title, author, votes, comments, image, time } = post;
+    const formattedTime = new Date(time * 1000).toLocaleDateString();
+
+    const [upVoted, setUpVoted] = useState(false);
+    const [downVoted, setDownVoted] = useState(false);
+
+    const handleUpvote = () => {
+        console.log('You upvoted this post!');
+        setUpVoted(true);
+        setDownVoted(false);
+    }
+
+    const handleDownvote = () => {
+        console.log('You downvoted this post!');
+        setUpVoted(false);
+        setDownVoted(true);
+    }
+
   return (
     <article>
         <div className='post-card'>
             <div className='post-votes-container'>
-                <span class="material-symbols-rounded votes up">arrow_upward_alt</span>
-                <div className='votes'>45</div>
-                <span class="material-symbols-rounded votes down">arrow_downward_alt</span>
+                <span 
+                onClick={handleUpvote} 
+                className={`material-symbols-rounded votes up ${upVoted ? "active" : ""}`}>arrow_upward_alt</span>
+                <div className='votes'>{votes}</div>
+                <span 
+                onClick={handleDownvote} 
+                className={`material-symbols-rounded votes down ${downVoted ? "active" : ""}`}>arrow_downward_alt</span>
             </div>
             <div className='post-container'>
-                <div className='post-title'>olympic shooting silver medalist yusuf dikeç reprising his iconic posture</div>
-                <img className='post-image' src="https://i.redd.it/zjloz5b9bzfd1.jpeg" />
+                <div className='post-title'>{title}</div>
+                <img className='post-image' src={image} />
                 <div className='post-details-container'>
-                    <div className='author'>Quzubaba</div>
-                    <div className="time">7 hours ago</div>
+                    <div className='author'>{author}</div>
+                    <div className="time">{formattedTime} hours ago</div>
                     <div className='comments'>
-                        <span class="material-symbols-rounded comments">chat</span>
-                        <p>850</p>
+                        <span className="material-symbols-rounded comments">chat</span>
+                        <p>{comments}</p>
                     </div>
                 </div>
             </div>
