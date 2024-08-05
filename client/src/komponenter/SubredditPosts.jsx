@@ -55,7 +55,7 @@ const SubredditPosts = () => {
             post={post} 
           />
         ))
-      ) : <p>No posts found.</p>
+      ) : <p style={{textAlign: "center"}}>No posts found 😢!</p>
       }
     </main>
   )

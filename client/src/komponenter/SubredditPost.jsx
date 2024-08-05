@@ -9,15 +9,7 @@ import { useSelector } from 'react-redux';
 
 TimeAgo.addDefaultLocale(en);
 
-const formatVotes = (votes) => {
-    if (votes >= 1_000_000) {
-      return (votes / 1_000_000).toFixed(1) + 'M';
-    } else if (votes >= 1_000) {
-      return (votes / 1_000).toFixed(1) + 'K'; 
-    } else {
-      return votes; 
-    }
-  };
+
 
 const SubredditPost = ({ post }) => {
 
@@ -25,7 +17,17 @@ const SubredditPost = ({ post }) => {
     const [postComments, setPostComments] = useState([]);
     const [toggleComments, setToggleComments] = useState(false);
     const [numVotes, setNumVotes] = useState(votes);
-    const activeSubreddit = useSelector(state => state.post.activeSubreddit)
+    const activeSubreddit = useSelector(state => state.post.activeSubreddit);
+
+    const formatVotes = (votes) => {
+        if (votes >= 1_000_000) {
+          return (votes / 1_000_000).toFixed(1) + 'M';
+        } else if (votes >= 1_000) {
+          return (votes / 1_000).toFixed(1) + 'K'; 
+        } else {
+          return votes; 
+        }
+      };
 
     const formattedVotes = formatVotes(votes);
 
