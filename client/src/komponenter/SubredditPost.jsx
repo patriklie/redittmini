@@ -1,22 +1,17 @@
 import React, { useState } from 'react';
-
 import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en';
 import ReactTimeAgo from 'react-time-ago'
-
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 
 TimeAgo.addDefaultLocale(en);
-
-
 
 const SubredditPost = ({ post }) => {
 
     const { title, author, votes, comments, image, time, text, id } = post;
     const [postComments, setPostComments] = useState([]);
     const [toggleComments, setToggleComments] = useState(false);
-    const [numVotes, setNumVotes] = useState(votes);
     const activeSubreddit = useSelector(state => state.post.activeSubreddit);
 
     const formatVotes = (votes) => {
@@ -94,7 +89,7 @@ const SubredditPost = ({ post }) => {
 
             <div className='post-container'>
                 <div className='post-title'>{title}</div>
-                <img className='post-image' src={image} />
+                <img className='post-image' src={image} alt="image" />
                 { text && (
             <div className='post-text'>{text}</div>
           )}
