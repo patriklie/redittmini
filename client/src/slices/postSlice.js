@@ -9,6 +9,7 @@ const initialState = {
         image: "",
         id: "2qs0k"
     },
+    searchWord: "",
 }
 
 const postSlice = createSlice({
@@ -22,9 +23,13 @@ const postSlice = createSlice({
         addActiveSubreddit: (state, action) => {
             console.log('inni redux store: ', action.payload)
             state.activeSubreddit = action.payload;
+        },
+        addSearch: (state, action) => {
+            console.log("Search word added to store: ", action.payload);
+            state.searchWord = action.payload;
         }
     }
 })
 
-export const { addSubredditPosts, addActiveSubreddit } = postSlice.actions;
+export const { addSubredditPosts, addActiveSubreddit, addSearch } = postSlice.actions;
 export default postSlice.reducer;

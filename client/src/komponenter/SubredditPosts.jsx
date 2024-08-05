@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
 import SubredditPost from './SubredditPost';
+import { addSubredditPosts } from '../slices/postSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 const SubredditPosts = () => {
 
   const [posts, setPosts] = useState([]);
   const activeSubreddit = useSelector(state => state.post.activeSubreddit);
+  const searchWord = useSelector(state => state.post.searchWord);
   console.log("Aktiv subreddit fra store i subreddit komp: ", activeSubreddit);
+  const dispatch = useDispatch();
 
 
   useEffect(() => {
 
     const fetchPostsFromActive = async () => {
-
       const response = await axios(`https://www.reddit.com/${activeSubreddit.url}.json`)
-
       console.log("Her er postene til active sub: ", response.data.data.children);
 
       const mappedPosts = response.data.data.children.map(post => ({
@@ -29,17 +30,26 @@ const SubredditPosts = () => {
         text: post.data.selftext,
       }))
       setPosts(mappedPosts);
+      dispatch(addSubredditPosts(mappedPosts));
     }
   
     fetchPostsFromActive();
 
-  },[activeSubreddit])
+  },[activeSubreddit]);
+
+  const filteredPosts = searchWord
+    ? posts.filter(post => 
+        post.title.toLowerCase().includes(searchWord.toLowerCase()) ||
+        post.author.toLowerCase().includes(searchWord.toLowerCase()) ||
+        post.text.toLowerCase().includes(searchWord.toLowerCase())
+      )
+    : posts;  
 
 
   return (
     <main>
-      { posts.length > 0 ? (
-        posts.map(post => (
+      {filteredPosts.length > 0 ? (
+        filteredPosts.map(post => (
           <SubredditPost 
             key={post.id} 
             post={post} 
@@ -47,7 +57,6 @@ const SubredditPosts = () => {
         ))
       ) : <p>No posts found.</p>
       }
-
     </main>
   )
 }

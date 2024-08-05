@@ -1,6 +1,18 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { addSearch } from '../slices/postSlice';
 
 const Navbar = () => {
+
+  const dispatch = useDispatch();
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleSearch = (e) => {
+    console.log("Searching");
+    setSearchTerm(e.target.value);
+    dispatch(addSearch(e.target.value));
+  }
+
   return (
     <div className='navbar'>
       <div className='navbar-logo'>
@@ -14,7 +26,7 @@ const Navbar = () => {
       </div>
 
       <form className='navbar-search'>
-        <input type='text' placeholder='Search'/>
+        <input onChange={handleSearch} value={searchTerm} type='text' placeholder='Search'/>
         <span className="material-symbols-rounded search-icon">search</span>
       </form>
         
