@@ -17,6 +17,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 html, body {
@@ -160,6 +161,7 @@ main {
     border-radius: var(--border-radiusen);
     display: flex;
     margin-bottom: var(--spacing-2);
+    max-width: 100%;
 }
 
 .post-image {
@@ -172,6 +174,13 @@ main {
     font-weight: 700;
     color:rgb(75, 75, 75);
     margin-bottom: var(--spacing-2);
+    overflow-wrap: break-word;
+}
+
+.post-text {
+        word-break: break-word;
+        overflow-wrap: break-word;
+        max-width: 100%;
 }
 
 .post-title::first-letter {
@@ -208,8 +217,7 @@ main {
 }
 
 .post-container {
-    word-break: break-all;
-    width: 100%;
+    max-width: 100%;
 }
 
 .post-details-container {
@@ -234,12 +242,17 @@ main {
 
 /* COMMENTS */
 
+.comment-section {
+    max-width: 100%;
+}
+
 .comment-container {
     background-color: rgb(231, 234, 255);
     padding: var(--spacing-1);
     border-radius: var(--border-radiusen);
     margin-top: var(--spacing-1);
     transition: .5s ease;
+    max-width: 100%;
 }
 
 .comment-container:hover {
@@ -260,5 +273,7 @@ main {
 }
 
 .comment-text {
-    word-break: normal;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
 }

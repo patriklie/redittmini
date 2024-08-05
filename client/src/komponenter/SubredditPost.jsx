@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
+
 import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en';
+import ReactTimeAgo from 'react-time-ago'
+
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 
 TimeAgo.addDefaultLocale(en);
-const timeAgo = new TimeAgo('en-US');
 
 const formatVotes = (votes) => {
     if (votes >= 1_000_000) {
@@ -25,7 +27,6 @@ const SubredditPost = ({ post }) => {
     const [numVotes, setNumVotes] = useState(votes);
     const activeSubreddit = useSelector(state => state.post.activeSubreddit)
 
-    const formattedTime = new Date(time * 1000);
     const formattedVotes = formatVotes(votes);
 
     const [upVoted, setUpVoted] = useState(false);
@@ -62,16 +63,18 @@ const SubredditPost = ({ post }) => {
             console.log(response.data[1].data.children);
 
             if (response.data[1].data.children.length > 0) {
-                const comments = response.data[1].data.children.map(comment => ({
-                    commentAuthor: comment.data.author,
-                    commentTime: comment.data.created_utc,
-                    commentId: comment.data.id,
-                    commentText: comment.data.body
-                }))
+                const comments = response.data[1].data.children
+                    .filter(comment => comment.kind !== "more")
+                    .map(comment => ({
+                        commentAuthor: comment.data.author,
+                        commentTime: comment.data.created_utc,
+                        commentId: comment.data.id,
+                        commentText: comment.data.body
+                    }))
                 setPostComments(comments);
             }
-    } 
-}
+        } 
+    }
 
   return (
     <article>
@@ -96,7 +99,7 @@ const SubredditPost = ({ post }) => {
                 
                 <div className='post-details-container'>
                     <div className='author'>{author}</div>
-                    <div className="time">{timeAgo.format(formattedTime)}</div>
+                    <div className="time"><ReactTimeAgo date={new Date(time * 1000)} locale="en-US" /></div>
                     <div className='comments'>
                         <span onClick={fetchComments} className="material-symbols-rounded comments">chat</span>
                         <p>{comments}</p>
@@ -110,7 +113,9 @@ const SubredditPost = ({ post }) => {
                         <div key={comment.commentId} className='comment-container'>
                             <div className='comment-info'>
                                 <div className='comment-username'>{comment.commentAuthor}</div>
-                                <div className='comment-time'>{timeAgo.format(new Date(comment.commentTime * 1000))}</div>
+                                <div className='comment-time'> 
+                                    {isNaN(comment.commentTime) ? 'Mangler tid' : <ReactTimeAgo date={new Date(comment.commentTime * 1000)} locale="en-US" />}
+                                </div>
                             </div>
                             <div className='comment-text'>{comment.commentText}</div>
                         </div>
