@@ -1,22 +1,30 @@
 # Reditt Mini Clone
 
 ## Beskrivelse
-Dette prosjektet er en enkel applikasjon som lar brukere [funksjon X]. Den er bygget for å demonstrere [teknologi X] og [teknologi Y].
+Dette prosjektet er en enkel klone av Reddit. Den er bygget for å demonstrere bruk av React-komponenter og React Hooks. 
+
+I prosjektet henter jeg inn de 25 mest populære subreddit-kategoriene og tilhørende innlegg fra aktive subreddits. 
+Jeg har også laget en søkefunksjon som lar deg søke blant innleggene. 
+Det er også mulig å se kommentarer fra brukere med tidsstempler, brukernavn, og du kan stemme på innlegg (dog fiktivt).
 
 ## Teknologier
-- React
-- Redux
-- JavaScript (ES6+)
-- Webpack
-- CSS
+- **React**
+- **Redux Store**
+- **JavaScript (ES6+)**
+- **Axios**
+- **React Router**
+- **javascript-time-ago**
+- **Webpack**
+- **CSS Media Queries og CSS Variabler**
 
 ## Installasjon
 1. Klon repoen: `git clone https://github.com/brukernavn/prosjektnavn.git`
-2. Installer avhengigheter: `npm install`
-3. Start prosjektet: `npm start`
+2. Installer avhengigheter med: `npm install` eller 'npm i'
+3. Naviger deg inn i client mappen
+4. Start prosjektet med: `npm start`
 
 ## Bruk
-Gå til `localhost:3000` og start applikasjonen.
+Dersom ikke VS-code åpner browseren automatisk så gå til `localhost:3000`.
 
 ## Bidrag
-Åpen for bidrag. Vennligst lag en pull request hvis du har forbedringer.
+Åpen for bidrag. Vennligst lag en pull request hvis du har forbedringer :)
