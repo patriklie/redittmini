@@ -3,9 +3,8 @@
 ## Beskrivelse
 Dette prosjektet er en enkel klone av Reddit. Den er bygget for å demonstrere bruk av React-komponenter og React Hooks. 
 
-I prosjektet henter jeg inn de 25 mest populære subreddit-kategoriene og tilhørende innlegg fra aktive subreddits. 
-Jeg har også laget en søkefunksjon som lar deg søke blant innleggene. 
-Det er også mulig å se kommentarer fra brukere med tidsstempler, brukernavn, og du kan stemme på innlegg (dog fiktivt).
+Siden laster inn de 25 mest populære subreddit-kategoriene. Siden henter de siste postene fra aktiv subreddit. Jeg har også laget en søkefunksjon som lar deg søke blant postene på aktiv subreddit. 
+Det er også mulig å se kommentarer fra brukere med tidsstempler, brukernavn, og du kan up/downvote innlegg.
 
 ## Teknologier
 - **React**
