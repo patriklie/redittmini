@@ -1,10 +1,11 @@
 # Reditt Mini Clone
 
 ## Beskrivelse
-Dette prosjektet er en enkel klone av Reddit. Den er bygget for å demonstrere bruk av React-komponenter og React Hooks. 
+Dette prosjektet er en enkel klone av Reddit, bygget for å demonstrere bruken av React-komponenter og React Hooks.
 
-Siden laster inn de 25 mest populære subreddit-kategoriene. Siden henter de siste postene fra aktiv subreddit. Jeg har også laget en søkefunksjon som lar deg søke blant postene på aktiv subreddit. 
-Det er også mulig å se kommentarer fra brukere med tidsstempler, brukernavn, og du kan up/downvote innlegg.
+Siden laster inn de 25 mest populære subreddit-kategoriene og henter de nyeste innleggene fra den aktive subredditen. I tillegg har jeg implementert en søkefunksjon som lar deg søke blant innleggene i den aktive subredditen.
+
+Brukere kan også se kommentarer med tidsstempler og brukernavn, samt upvote og downvote innlegg. Dette gir en interaktiv opplevelse som etterligner det virkelige Reddit-miljøet.
 
 ## Teknologier
 - **React**
