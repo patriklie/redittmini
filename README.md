@@ -24,7 +24,7 @@ Det er også mulig å se kommentarer fra brukere med tidsstempler, brukernavn, o
 4. Start prosjektet med: `npm start`
 
 ## Bruk
-Dersom ikke VS-code åpner browseren automatisk så gå til `localhost:3000`.
+Dersom ikke VS-code (eller editoren du bruker) automatisk åpner browseren så gå til `localhost:3000`.
 
 ## Bidrag
 Åpen for bidrag. Vennligst lag en pull request hvis du har forbedringer :)
