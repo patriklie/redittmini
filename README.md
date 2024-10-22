@@ -26,5 +26,8 @@ Det er også mulig å se kommentarer fra brukere med tidsstempler, brukernavn, o
 ## Bruk
 Dersom ikke VS-code (eller editoren du bruker) automatisk åpner browseren så gå til `localhost:3000`.
 
+## Bilde
+![Forside av prosjektet](images/minireddit_2.png)
+
 ## Bidrag
 Åpen for bidrag. Vennligst lag en pull request hvis du har forbedringer :)
