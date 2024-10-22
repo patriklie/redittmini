@@ -16,7 +16,7 @@ const SubredditPosts = () => {
   useEffect(() => {
 
     const fetchPostsFromActive = async () => {
-      const response = await axios(`https://www.reddit.com/${activeSubreddit.url}.json`)
+      const response = await axios(`https://www.reddit.com${activeSubreddit.url}.json`)
       console.log("Her er postene til active sub: ", response.data.data.children);
 
       const mappedPosts = response.data.data.children.map(post => ({
