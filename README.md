@@ -16,7 +16,7 @@ Brukere kan også se kommentarer med tidsstempler og brukernavn, samt upvote og 
 - **javascript-time-ago**
 - **Webpack**
 - **CSS Media Queries og CSS Variabler**
-- - **Google Symbols**
+- **Google Symbols**
 
 ## Installasjon
 1. Klon repoen: `git clone https://github.com/brukernavn/prosjektnavn.git`
