@@ -19,7 +19,7 @@ Brukere kan også se kommentarer med tidsstempler og brukernavn, samt upvote og 
 - **Google Symbols**
 
 ## Installasjon
-1. Klon repoen: `git clone https://github.com/brukernavn/prosjektnavn.git`
+1. Klon repoen: `git clone https://github.com/patriklie/redittmini.git`
 2. Installer avhengigheter med: `npm install` eller `npm i`
 3. Naviger deg inn i client mappen
 4. Start prosjektet med: `npm start`
