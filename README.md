@@ -30,4 +30,4 @@ Dersom ikke VS-code (eller editoren du bruker) automatisk åpner browseren så g
 ![Forside av prosjektet](images/minireddit_2.png)
 
 ## Bidrag
-Åpen for bidrag. Vennligst lag en pull request hvis du har forbedringer :)
+Jeg er åpen for bidrag. Bare lag en pull request hvis du har forbedringer 🙌
