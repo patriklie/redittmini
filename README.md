@@ -1,12 +1,12 @@
-# Reditt Mini Clone
+# Reddit Mini Clone
 
-Dette prosjektet er en enkel klone av Reddit, bygget for å demonstrere bruken av React-komponenter og React Hooks.
+This project is a simple clone of Reddit, built to demonstrate the use of React components and React Hooks.
 
-Siden laster inn de 25 mest populære subreddit-kategoriene og henter de nyeste innleggene fra den aktive subredditen. I tillegg har jeg implementert en søkefunksjon som lar deg søke blant innleggene i den aktive subredditen.
+The page loads the 25 most popular subreddit categories and fetches the latest posts from the active subreddit. Additionally, I have implemented a search function that allows you to search among the posts in the active subreddit.
 
-Brukere kan også se kommentarer med tidsstempler og brukernavn, samt upvote og downvote innlegg. Dette gir en interaktiv opplevelse som etterligner det virkelige Reddit-miljøet.
+Users can also view comments with timestamps and usernames, as well as upvote and downvote posts. This provides an interactive experience that mimics the real Reddit environment.
 
-## Teknologier
+## Technologies
 - **React**
 - **Redux Store**
 - **JavaScript (ES6+)**
@@ -14,20 +14,20 @@ Brukere kan også se kommentarer med tidsstempler og brukernavn, samt upvote og 
 - **React Router**
 - **javascript-time-ago**
 - **Webpack**
-- **CSS Media Queries og CSS Variabler**
+- **CSS Media Queries and CSS Variables**
 - **Google Symbols**
 
-## Installasjon
-1. Klon repoen: `git clone https://github.com/patriklie/redittmini.git`
-2. Installer avhengigheter med: `npm install` eller `npm i`
-3. Naviger deg inn i client mappen
-4. Start prosjektet med: `npm start`
+## Installation
+1. Clone the repository: `git clone https://github.com/patriklie/redittmini.git`
+2. Install dependencies with: `npm install` or `npm i`
+3. Navigate into the client folder
+4. Start the project with: `npm start`
 
-## Bruk
-Dersom ikke VS-code (eller editoren du bruker) automatisk åpner browseren så gå til `localhost:3000`.
+## Usage
+If your editor (such as VS Code) doesn't automatically open the browser, go to `localhost:3000`.
 
-## Screenshot av forsiden
-![Forside av prosjektet](images/minireddit_2.png)
+## Screenshot of the homepage
+![Homepage of the project](images/minireddit_2.png)
 
-## Bidrag
-Jeg er åpen for bidrag. Bare lag en pull request hvis du har forbedringer 🙌
+## Contributions
+I welcome contributions. Just create a pull request if you have improvements 🙌
